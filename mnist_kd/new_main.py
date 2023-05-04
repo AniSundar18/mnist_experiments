@@ -314,7 +314,7 @@ def main():
         model_t = None
         trainable_list = nn.ModuleList([])
         trainable_list.append(model)
-        if args.distill is not None or args.freeze_layer:
+        if args.distill is not None:
             if args.teacher_model == 'CNN':
                 model_t = Net().to(device)
             elif args.teacher_model == 'ViT':
