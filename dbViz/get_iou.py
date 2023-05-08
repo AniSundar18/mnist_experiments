@@ -92,7 +92,7 @@ preds = {'Teacher': [], 'Dist': [], 'Ind': []}
 iou = {'Teacher-Dist': None, 'Teacher-Ind': None}
 count = 0
 for (data_mnist, target_mnist), (data_mnistm, target_mnistm) in zip(mnist_trainloader, mnistm_trainloader):
-    if count == 40:
+    if count == 50:
         break
     mnist_orig, target_mnist = data_mnist.to(device), target_mnist.to(device)
     mnistm, target_mnistm = data_mnistm.to(device), target_mnistm.to(device)    
@@ -102,16 +102,19 @@ for (data_mnist, target_mnist), (data_mnistm, target_mnistm) in zip(mnist_trainl
     images = []
     labels = []
     if 'mnist' in  args.plane_datasets:
+        random.seed(18)
         idxs = random.sample(range(1, len(data_dict['mnist'])), 3)
         for idx in idxs:
             images.append(data_dict['mnist'][idx])
             labels.append(target_dict['mnist'][idx])
     if 'mnist_cbg' in  args.plane_datasets:
+        random.seed(18)
         idxs = random.sample(range(1, len(data_dict['mnist_cbg'])), 3)
         for idx in idxs:
             images.append(data_dict['mnist_cbg'][idx])
             labels.append(target_dict['mnist_cbg'][idx])
     if 'mnistm' in  args.plane_datasets:
+        random.seed(18)
         idxs = random.sample(range(1, len(data_dict['mnistm'])), 3)
         for idx in idxs:
             images.append(data_dict['mnistm'][idx])
